@@ -1,11 +1,16 @@
-import React from 'react'
+import React, {useState} from "react";
 
-export const Home = () => {
-    return (
+
+import "antd/dist/antd.css";
+
+
+
+const Home = () => {
+	return(
         <div>
-            <h1>HOME</h1>
+            HOME
         </div>
     )
-}
+};
 
-export default Home
+export default Home;
