@@ -25,12 +25,19 @@ const  MenuNav = () => {
             left:0,
             bottom: 0
         } as React.CSSProperties,
+        menu__title:{
+            fontSize: "2rem",
+            paddingLeft: 30,
+            paddingBottom: 30,
+            fontFamily: "Verdana, Geneva, Tahoma, sans-serif"
+        },
         menu:{
             width: "100%",
-            height:"100vh",
+            height:"100%",
             paddingTop:30,
             fontSize : "1.8rem",
-            marginRight: "20rem"
+            marginRight: "20rem",
+            paddingLeft: 20
         },
         menu_item:{
             marginTop: 15,
@@ -39,6 +46,7 @@ const  MenuNav = () => {
   
 	return (
 		<Layout style={styles.layout}>
+            
 			<Menu
 				style={styles.menu}
 				defaultSelectedKeys={["1"]}
@@ -46,11 +54,12 @@ const  MenuNav = () => {
                 mode = {"inline"}
                 theme ={"dark"}
 			>
+                
+                {/* <div key="0" className="menu__title" style={styles.menu__title}> Wellcome to HCMC ThanhLi</div> */}
 				<Menu.Item style={styles.menu_item} key="1" icon={<HomeOutlined />}>
                     <Link to="/">
                         Home Page 
                     </Link>
-				
 				</Menu.Item>
 				<Menu.Item style={styles.menu_item} key="2" icon={<MessageFilled />}>
 					News 

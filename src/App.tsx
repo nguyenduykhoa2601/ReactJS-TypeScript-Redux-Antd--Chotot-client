@@ -10,7 +10,7 @@ import "antd/dist/antd.css";
 const App = () => {
 	return (
 		<Router>
-			<Row>
+			<Row gutter={[32,0]} style={{maxWidth: "100%"}}>
 				<Col span={6} style = {{position: "relative",height:"100vh"}}>
 					<MenuNav />
 				</Col>

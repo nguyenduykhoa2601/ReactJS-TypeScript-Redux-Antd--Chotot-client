@@ -1,0 +1,55 @@
+.register{
+    position: relative;
+    text-align: center;
+    height: 100%;
+    margin-top: 30px;
+    font-size: 1.6rem;
+}
+.register__logo{
+    font-size: 7rem;
+}
+
+.register__title{
+    margin-top: 30px;
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 50px;
+}
+
+.register__form{
+    max-width: 400px;
+    display: block;
+    margin: auto;
+}
+
+.register__form-input{
+    padding: 10px 5px;
+    border-radius: 5px;
+}
+
+.forgot__password{
+    text-align: right ;
+    padding-right: 10px;
+}
+
+.register__form-button{
+    padding: 0 30px;
+    margin-top: -20px;
+    margin-bottom: 30px;
+}
+
+.social__icon{
+    font-size: 3rem;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    padding: 10px
+}
+
+.social__icon:hover{
+    cursor: pointer;
+    background-color: #ccc;
+}
+
+.social__icon:nth-child(2){
+    margin: 0 10px;
+}
