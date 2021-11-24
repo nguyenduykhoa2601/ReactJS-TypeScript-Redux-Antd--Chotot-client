@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Form, Input, Button } from "antd";
-import { MailOutlined, LockOutlined } from "@ant-design/icons";
+import { MailOutlined, LockOutlined ,EyeTwoTone , EyeInvisibleOutlined} from "@ant-design/icons";
 
 import "antd/dist/antd.css";
 import { Link } from "react-router-dom";
@@ -42,10 +42,11 @@ const LoginForm = () => {
 					},
 				]}
 			>
-				<Input
+				<Input.Password
 					prefix={<LockOutlined className="login__form-input" />}
 					type="password"
 					placeholder="Password"
+					iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
 				/>
 			</Form.Item>
 			<Form.Item className="forgot__password" >
