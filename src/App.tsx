@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Row, Col } from "antd";
 
@@ -6,8 +6,15 @@ import PageRender from "./PageRender";
 import MenuNav from "./components/global/Menu";
 
 import "antd/dist/antd.css";
+import { useDispatch, useSelector } from "react-redux";
+import { RootStore } from "./utils/TypeScript";
+import { refreshToken } from "./redux/actions/authAction";
 
 const App = () => {
+	const dispatch = useDispatch()
+	useEffect(()=>{	
+		dispatch(refreshToken())
+	},[dispatch])
 	return (
 		<Router>
 			<Row gutter={[32,0]} style={{maxWidth: "100%"}}>

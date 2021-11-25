@@ -1,0 +1,26 @@
+.home{
+    margin: 20px 20px;
+    align-items: center;
+}
+
+
+
+.home__row{
+    align-items: center;
+    text-align: center;
+}
+
+.avatar_img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    margin-left: 30px;
+    margin-right: 10px;
+}
+
+.home__username{
+    font-size: 1.6rem;
+    font-weight: 700;
+    font-style: italic;
+}

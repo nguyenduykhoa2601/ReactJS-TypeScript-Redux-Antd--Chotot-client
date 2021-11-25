@@ -5,9 +5,16 @@ import { MailOutlined, LockOutlined ,EyeTwoTone , EyeInvisibleOutlined} from "@a
 
 import "antd/dist/antd.css";
 import { Link } from "react-router-dom";
+import { login } from "../../redux/actions/authAction";
+import { useDispatch } from "react-redux";
+import { IUserLogin } from "../../utils/TypeScript";
 const LoginForm = () => {
-	const onFinish = (values :object) => {
-		console.log("Received values of form: ", values);
+
+	const dispatch = useDispatch()
+
+	//call API to login and redirect Page
+	const onFinish = (values :IUserLogin) => {
+		dispatch(login(values))
 	};
 	return (
 		<Form
@@ -20,7 +27,7 @@ const LoginForm = () => {
             size="large"
 		>
 			<Form.Item
-				name="email"
+				name="account"
 				rules={[
 					{
 						required: true,
