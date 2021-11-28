@@ -9,6 +9,7 @@ Use Ant-design to desgin this website
 ## Set up environment
 
 Require: node version 14.16.0, yarn version: 1.22.15 (recommend use version like me or you can use another node version like 14.xx, yarn 1.xx)
+
 NOTE: Please don't use node version 17.xx or yarn < 1.xx, it didn't work.
 
 Use commmand: `npm install` to download all libraries
