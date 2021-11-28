@@ -24,3 +24,9 @@
     font-weight: 700;
     font-style: italic;
 }
+
+.home__user{
+    padding: 15px 10px ;
+    text-align: center;
+    font-size: 1.6rem;
+}

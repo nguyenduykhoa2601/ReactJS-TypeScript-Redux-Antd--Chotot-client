@@ -4,6 +4,9 @@ import { UserOutlined } from "@ant-design/icons";
 import "antd/dist/antd.css";
 import LoginForm from "../components/auth/LoginForm";
 import SocialLogin from "../components/auth/SocialLogin";
+import { useSelector } from "react-redux";
+import { RootStore } from "../utils/TypeScript";
+import Home from ".";
 
 const Login = () => {
 	return (

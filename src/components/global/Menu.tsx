@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { ReactNode, useState } from "react";
 
 import { Menu, Switch, Divider, Layout } from "antd";
 import {
@@ -9,10 +9,12 @@ import {
 	FacebookOutlined,
 	LoginOutlined,
 	LogoutOutlined,
+	FileProtectOutlined,
+	AmazonOutlined
 } from "@ant-design/icons";
 
 import "antd/dist/antd.css";
-import { Link } from "react-router-dom";
+import { Link,useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { RootStore } from "../../utils/TypeScript";
 import { logout } from "../../redux/actions/authAction";
@@ -21,11 +23,7 @@ const { SubMenu } = Menu;
 
 const MenuNav = () => {
 	const { auth } = useSelector((state: RootStore) => state);
-    const dispatch = useDispatch()
-    const handleLogout = ()=>{
-        if(!auth.access_token) return
-        dispatch(logout(auth?.access_token))
-    }
+	const location = useLocation()
 	return (
 		<Layout style={styles.layout}>
 			<Menu
@@ -34,12 +32,13 @@ const MenuNav = () => {
 				defaultOpenKeys={["sub1"]}
 				mode={"inline"}
 				theme={"dark"}
+				selectedKeys={[`${location.pathname}`,]}
 			>
 				{/* <div key="0" className="menu__title" style={styles.menu__title}> Wellcome to HCMC ThanhLi</div> */}
-				<Menu.Item style={styles.menu_item} key="1" icon={<HomeOutlined />}>
+				<Menu.Item style={styles.menu_item} key="/" icon={<HomeOutlined />}>
 					<Link to="/">Home Page</Link>
 				</Menu.Item>
-				<Menu.Item style={styles.menu_item} key="2" icon={<MessageFilled />}>
+				<Menu.Item style={styles.menu_item} key="/news" icon={<MessageFilled />}>
 					News
 				</Menu.Item>
 
@@ -51,10 +50,10 @@ const MenuNav = () => {
 							icon={<AppstoreOutlined />}
 							title="Login/Register"
 						>
-							<Menu.Item key="3" icon={<LoginOutlined />}>
+							<Menu.Item key="/login" icon={<LoginOutlined />}>
 								<Link to="/login">Login</Link>
 							</Menu.Item>
-							<Menu.Item key="4" icon={<LogoutOutlined />}>
+							<Menu.Item key="/register" icon={<LogoutOutlined />}>
 								<Link to="/register">Register</Link>
 							</Menu.Item>
 						</SubMenu>
@@ -67,17 +66,17 @@ const MenuNav = () => {
 							icon={<AppstoreOutlined />}
 							title="Profile"
 						>
-							<Menu.Item key="3" icon={<LoginOutlined />}>
-								<Link to="/login"> Profile </Link>
+							<Menu.Item key="/profile" icon={<FileProtectOutlined />}>
+								<Link to="/profile"> Profile </Link>
 							</Menu.Item>
-							<Menu.Item onClick={handleLogout} key="4" icon={<LogoutOutlined />}>
-								<span >Logout</span>
+							<Menu.Item key="/password" icon={<SettingOutlined />}>
+								<Link to="/profile"> Change password </Link>
 							</Menu.Item>
 						</SubMenu>
 					</>
 				)}
 
-				<Menu.Item style={styles.menu_item} key="5" icon={<SettingOutlined />}>
+				<Menu.Item style={styles.menu_item} key="/story" icon={<AmazonOutlined />}>
 					Post Story
 				</Menu.Item>
 				<Menu.Item

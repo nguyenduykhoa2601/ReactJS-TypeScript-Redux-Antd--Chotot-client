@@ -1,0 +1,25 @@
+
+.loading{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+    font-size: 2rem;
+    padding-left: 50%;
+    z-index: 2;
+    background-color: white;
+}
+
+.toast{
+    margin-top: 10px;
+    text-align: center;
+    max-width: 200px;
+    align-items: center;
+    margin-left: 42%;
+}
+
+.spin{
+    transform: scale(2.5);
+}
