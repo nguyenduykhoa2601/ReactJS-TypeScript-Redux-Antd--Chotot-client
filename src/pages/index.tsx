@@ -21,10 +21,10 @@ const Home = () => {
 
 	const menu = (
 		<Menu>
-			<Menu.Item >
+			<Menu.Item key="/profile">
 				<Link to="/profile" className="home__user">Profile</Link>
 			</Menu.Item>
-			<Menu.Item onClick={handleLogout}>
+			<Menu.Item onClick={handleLogout} key="logout">
 				<span className="home__user">Logout</span>
 			</Menu.Item>
 		</Menu>

@@ -1,30 +1,20 @@
 import React from "react";
-
-import {
-	Form,
-	Input,
-	InputNumber,
-	Cascader,
-	Select,
-	Row,
-	Col,
-	Checkbox,
-	Button,
-	AutoComplete,
-} from "antd";
-
 import "antd/dist/antd.css";
-import { IParams, RootStore } from "../../utils/TypeScript";
-import { useParams } from "react-router";
+import { RootStore } from "../../utils/TypeScript";
 import { useSelector } from "react-redux";
+import Info from "../../components/profile/Info";
+
 const Profile = () => {
-    const {slug}:IParams = useParams()
-    const {auth} = useSelector((state:RootStore)=>state)
+	const { auth } = useSelector((state: RootStore) => state);
 
 	return (
-		<div className="profile">
-			<h1> </h1>
-		</div>
+		<>
+			{auth && (
+				<div className="profile" style={{marginTop : 50}}>
+					<Info />
+				</div>
+			)}
+		</>
 	);
 };
 

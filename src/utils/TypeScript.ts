@@ -35,6 +35,8 @@ export interface IUser extends IUserLogin {
 	updatedAt: string;
 	createdAt: string;
 	_id: string;
+	phone: string;
+	address: string;
 }
 
 export interface IAlert {

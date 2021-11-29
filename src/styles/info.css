@@ -1,0 +1,24 @@
+.info__col-2{
+    text-align: center;
+}
+
+.info__avatar{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    margin-bottom: 30px;
+}
+
+.info__social-connected{
+    margin-top: 30px;
+}
+
+.info__social-icon{
+    transform: scale(2);
+}
+
+.info__social-icon:nth-child(2){
+    margin: 0 30px;
+    color: orange;
+}

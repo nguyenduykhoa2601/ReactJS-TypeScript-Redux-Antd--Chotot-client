@@ -67,7 +67,7 @@ const MenuNav = () => {
 							title="Profile"
 						>
 							<Menu.Item key="/profile" icon={<FileProtectOutlined />}>
-								<Link to="/profile"> Profile </Link>
+								<Link to={`/profile/id=${auth.user._id}`}> Profile </Link>
 							</Menu.Item>
 							<Menu.Item key="/password" icon={<SettingOutlined />}>
 								<Link to="/profile"> Change password </Link>

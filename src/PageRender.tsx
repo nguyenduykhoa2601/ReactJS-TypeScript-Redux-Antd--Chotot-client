@@ -25,7 +25,7 @@ const PageRender = () => {
     }
   }
   if(auth.access_token){
-    if(page === 'login') page=''
+    if(page === 'login') page = ''
     if(page === 'register') page = ''
   }
   if(page){
