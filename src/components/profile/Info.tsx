@@ -9,20 +9,24 @@ import {
 	EditOutlined,
 	GoogleOutlined,
 	FacebookFilled,
+	MailOutlined,
+	EnvironmentOutlined,
+	PhoneOutlined
 } from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
 import { RootStore } from "../../utils/TypeScript";
+import { updateUser } from "../../redux/actions/userAction";
 
 const Info = () => {
 	const { auth } = useSelector((state: RootStore) => state);
 	const dispatch = useDispatch();
 	const [isEditName, setIsEditName] = useState(false);
-	const [name, setName] = useState(auth?.user?.name);
+	const [name, setName] = useState<any>(auth?.user?.name);
 	const [isEditPhone, setIsEditPhone] = useState(false);
 	const [isEditAddress, setIsEditAddress] = useState(false);
 	const [avatar, setAvatar] = useState<any>(auth?.user?.avatar);
-	const [phone, setPhone] = useState(auth?.user?.phone);
-	const [address, setAddress] = useState(auth?.user?.address);
+	const [phone, setPhone] = useState<any>(auth?.user?.phone);
+	const [address, setAddress] = useState<any>(auth?.user?.address);
 
 	const props: UploadProps = {
 		listType: "picture",
@@ -32,24 +36,38 @@ const Info = () => {
 				reader.readAsDataURL(file);
 				reader.onload = async (e) => {
 					setAvatar(reader.result);
+					dispatch(updateUser(file, name ,address, phone , auth))
 				};
 			});
 		},
 	};
 
 	const onFinish = (values: any) => {
-		console.log(values);
+		setName(values.name)
+		setAddress(values.address)
+		setPhone(values.phone)
+		console.log("ADD",address)
+		console.log("Name",name)
+		dispatch(updateUser(avatar, name ,address, phone , auth))
 	};
 	return (
 		<div className="info">
 			<Row>
 				<Col span={12}>
-					<Form onFinish={onFinish} layout="vertical">
+					<Form
+						initialValues={{
+							["name"] : auth.user?.name,
+							["email"] : auth.user?.account,
+							["address"]: auth.user?.address,
+							["phone"] : auth.user?.phone,
+						}}
+						onFinish={onFinish}
+						layout="vertical"
+					>
 						<Form.Item label="Your Name" name="name">
 							<Input
-								name="name"
+								
 								prefix={<UserOutlined />}
-								value={name}
 								addonAfter={
 									<EditOutlined onClick={() => setIsEditName(!isEditName)} />
 								}
@@ -57,30 +75,30 @@ const Info = () => {
 								onChange={(e) => setName(e.target.value)}
 							/>
 						</Form.Item>
-						<Form.Item label="Email" name="email">
+						<Form.Item  label="Email" name="email">
 							<Input
-								prefix={<UserOutlined />}
-								value={auth.user?.account}
+								prefix={<MailOutlined />}
+								
 								disabled={true}
 							/>
 						</Form.Item>
 						<Form.Item label="Address" name="address">
 							<Input
-								prefix={<UserOutlined />}
-								value={auth.user?.name}
+								prefix={<EnvironmentOutlined />}
+				
 								addonAfter={
 									<EditOutlined
 										onClick={() => setIsEditAddress(!isEditAddress)}
 									/>
 								}
 								disabled={!isEditAddress}
-								onChange={(e) => setName(e.target.value)}
+								onChange={(e) => setAddress(e.target.value)}
 							/>
 						</Form.Item>
 						<Form.Item label="Phone" name="phone">
 							<Input
-								prefix={<UserOutlined />}
-								value={phone}
+								prefix={<PhoneOutlined />}
+							
 								addonAfter={
 									<EditOutlined onClick={() => setIsEditPhone(!isEditPhone)} />
 								}
@@ -88,7 +106,7 @@ const Info = () => {
 								onChange={(e) => setPhone(e.target.value)}
 							/>
 						</Form.Item>
-						<Form.Item>
+						<Form.Item >
 							<Button type="primary" htmlType="submit">
 								Save Changes
 							</Button>
@@ -102,9 +120,8 @@ const Info = () => {
 						<Button icon={<UploadOutlined />}>Change avatar</Button>
 					</Upload>
 					<div className="info__social-connected">
-						
 						<FacebookFilled className="info__social-icon" />
-                        <GoogleOutlined className="info__social-icon" />
+						<GoogleOutlined className="info__social-icon" />
 						<MobileOutlined className="info__social-icon" />
 					</div>
 				</Col>

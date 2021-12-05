@@ -22,7 +22,7 @@ const Home = () => {
 	const menu = (
 		<Menu>
 			<Menu.Item key="/profile">
-				<Link to="/profile" className="home__user">Profile</Link>
+				<Link to={`/profile/id=${auth.user?._id}`} className="home__user">Profile</Link>
 			</Menu.Item>
 			<Menu.Item onClick={handleLogout} key="logout">
 				<span className="home__user">Logout</span>

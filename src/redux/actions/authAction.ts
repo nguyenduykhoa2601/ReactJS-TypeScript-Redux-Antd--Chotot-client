@@ -1,12 +1,9 @@
-import { IAlert, IUserLogin, IUserRegister } from "../../utils/TypeScript"
+import { IUserLogin, IUserRegister } from "../../utils/TypeScript"
 import { Dispatch } from "redux"
 import { AUTH, IAuthType } from "../types/authTypes"
 import { IAlertType, ALERT } from "../types/alertTypes"
 import { getAPI, postAPI } from "../../utils/FetchData"
-import axios from "axios"
 import { checkTokenExp } from "../../utils/checkTokenExp"
-
-
 
 export const login = (userLogin: IUserLogin)=>
 async(dispatch : Dispatch<IAuthType | IAlertType>) =>{
@@ -59,10 +56,9 @@ async(dispatch : Dispatch<IAuthType | IAlertType>) =>{
         dispatch({
             type: ALERT,
             payload: {
-                success: error.response.data.msg
+                errors: error.response.data.msg
             }
         })
-        
     }
 }
 
@@ -114,6 +110,29 @@ async(dispatch:Dispatch<IAuthType | IAlertType>) =>{
             payload: res.data
         })
     } catch (error : any) {
+        dispatch({
+            type: ALERT,
+            payload: {
+                errors: error.response.data.msg
+            }
+        })
+    }
+}
+
+export const googleLogin = (id_token : string) => async(dispatch: Dispatch <IAlertType | IAuthType>)=>{
+    try {
+        dispatch({
+            type: ALERT,
+            payload: {
+                loading: true
+            }
+        })
+        const res = await postAPI('google_login',{id_token})
+        dispatch({ type: AUTH,payload: res.data })
+
+        dispatch({ type: ALERT, payload: { success: res.data.msg } })
+        localStorage.setItem('logged', 'you are logged')
+    } catch (error:any) {
         dispatch({
             type: ALERT,
             payload: {

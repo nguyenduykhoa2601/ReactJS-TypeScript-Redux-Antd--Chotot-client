@@ -70,7 +70,7 @@ const MenuNav = () => {
 								<Link to={`/profile/id=${auth.user._id}`}> Profile </Link>
 							</Menu.Item>
 							<Menu.Item key="/password" icon={<SettingOutlined />}>
-								<Link to="/profile"> Change password </Link>
+								<Link to={`/changePass/id=${auth.user._id}`}> Change password </Link>
 							</Menu.Item>
 						</SubMenu>
 					</>
