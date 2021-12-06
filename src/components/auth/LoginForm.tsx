@@ -57,7 +57,7 @@ const LoginForm = () => {
 				/>
 			</Form.Item>
 			<Form.Item className="forgot__password" >
-				<Link to="/">
+				<Link to="/forgot_password">
 					Forgot password?
 				</Link>
 			</Form.Item>

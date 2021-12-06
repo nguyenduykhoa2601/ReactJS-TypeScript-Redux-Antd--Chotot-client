@@ -19,7 +19,7 @@ const Login = () => {
             <div className="login__form">
                 <LoginForm />
             </div>
-			<div>
+			<div className="login__social">
 				<SocialLogin />
 			</div>
             
