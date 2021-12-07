@@ -44,3 +44,15 @@ export interface IAlert {
 	errors?: string | string[];
 	loading?: boolean;
 }
+
+export interface IStory {
+	_id?: string
+	user: string | IUser
+	title: string
+	content: string
+	description: string
+	thumbnail: string,
+	price: number
+	category: string
+	createdAt: string
+  }

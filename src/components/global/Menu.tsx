@@ -10,11 +10,11 @@ import {
 	LoginOutlined,
 	LogoutOutlined,
 	FileProtectOutlined,
-	AmazonOutlined
+	AmazonOutlined,
 } from "@ant-design/icons";
 
 import "antd/dist/antd.css";
-import { Link,useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { RootStore } from "../../utils/TypeScript";
 import { logout } from "../../redux/actions/authAction";
@@ -23,7 +23,7 @@ const { SubMenu } = Menu;
 
 const MenuNav = () => {
 	const { auth } = useSelector((state: RootStore) => state);
-	const location = useLocation()
+	const location = useLocation();
 	return (
 		<Layout style={styles.layout}>
 			<Menu
@@ -32,17 +32,21 @@ const MenuNav = () => {
 				defaultOpenKeys={["sub1"]}
 				mode={"inline"}
 				theme={"dark"}
-				selectedKeys={[`${location.pathname}`,]}
+				selectedKeys={[`${location.pathname}`]}
 			>
 				{/* <div key="0" className="menu__title" style={styles.menu__title}> Wellcome to HCMC ThanhLi</div> */}
 				<Menu.Item style={styles.menu_item} key="/" icon={<HomeOutlined />}>
 					<Link to="/">Home Page</Link>
 				</Menu.Item>
-				<Menu.Item style={styles.menu_item} key="/news" icon={<MessageFilled />}>
+				<Menu.Item
+					style={styles.menu_item}
+					key="/news"
+					icon={<MessageFilled />}
+				>
 					News
 				</Menu.Item>
 
-				{ !auth.user ? (
+				{!auth.user ? (
 					<>
 						<SubMenu
 							style={styles.menu_item}
@@ -70,14 +74,21 @@ const MenuNav = () => {
 								<Link to={`/profile/id=${auth.user._id}`}> Profile </Link>
 							</Menu.Item>
 							<Menu.Item key="/password" icon={<SettingOutlined />}>
-								<Link to={`/changePass/id=${auth.user._id}`}> Change password </Link>
+								<Link to={`/changePass/id=${auth.user._id}`}>
+									{" "}
+									Change password{" "}
+								</Link>
 							</Menu.Item>
 						</SubMenu>
 					</>
 				)}
 
-				<Menu.Item style={styles.menu_item} key="/story" icon={<AmazonOutlined />}>
-					Post Story
+				<Menu.Item
+					style={styles.menu_item}
+					key="/create_item"
+					icon={<AmazonOutlined />}
+				>
+					<Link to={auth.user ? "/create_item" : "/login"}>Post Story</Link>
 				</Menu.Item>
 				<Menu.Item
 					style={styles.menu_item}
